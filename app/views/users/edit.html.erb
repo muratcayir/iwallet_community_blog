@@ -1,0 +1,41 @@
+<div class="max-w-2xl mx-auto bg-white p-6 rounded-lg shadow-md mt-10">
+  <h1 class="text-3xl font-bold mb-4 text-gray-900">Edit Profile</h1>
+
+  <%= form_with model: @user, url: user_path(@user.username), method: :patch, local: true, class: "space-y-6" do |f| %>
+    <% if @user.errors.any? %>
+      <div id="error_explanation" class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative">
+        <strong class="font-bold"><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</strong>
+        <ul class="mt-2 list-disc list-inside">
+          <% @user.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= f.label :username, class: "block text-sm font-medium text-gray-700" %>
+      <%= f.text_field :username, class: "text-black mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :email, class: "block text-sm font-medium text-gray-700" %>
+      <%= f.email_field :email, class: "text-black mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :password, class: "block text-sm font-medium text-gray-700" %> 
+      <span class="text-sm text-gray-500">(leave blank if you don't want to change it)</span>
+      <%= f.password_field :password, class: "mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :password_confirmation, class: "block text-sm font-medium text-gray-700" %>
+      <%= f.password_field :password_confirmation, class: "mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit 'Update', class: "inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-gray-600 hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
+    </div>
+  <% end %>
+</div>

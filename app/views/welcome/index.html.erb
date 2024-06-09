@@ -1,0 +1,26 @@
+<main>
+  <div id="slider" class="mb-4">
+    <div class="slider-inner">
+      <div id="slider-content">
+        <% @articles.each_with_index do |article, index| %>
+          <div class="slide" data-slide-index="<%= index %>" style="<%= 'display: none;' if index != 0 %>">
+            <div class="meta"><%= article.tags.map(&:name).join(", ") %></div>
+            <h2 id="slide-title"><a href="<%= article_path(article) %>"><%= article.truncated_title %></a></h2>
+            <span data-slide-title="<%= index %>">
+              <%= link_to article.truncated_title, article_path(article) %>
+            </span>
+            <div class="meta"><%= article.user.username %></div>
+            <div id="slide-status"><%= time_tag article.created_at, "data-local": "time-ago" %></div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+    <div id="pagination">
+      <% @articles.each_with_index do |article, index| %>
+        <button class="<%= 'active' if index == 0 %>" data-slide="<%= index %>"></button>
+      <% end %>
+    </div>
+  </div>
+</main>
+

@@ -1,0 +1,38 @@
+<div class="border-b border-gray-200 pb-4 mb-4">
+  <p>
+    <strong class="text-lg text-gray-700"><%= comment.user.username %>:</strong>
+    <%= comment.content %>
+  </p>
+  <% if comment.user == current_user %>
+    <% if comment.status == 'pending' %>
+      <div class="flex space-x-2 mt-2">
+        <%= link_to 'Approve', approve_article_comment_path(@article, comment), method: :patch, class: 'text-green-500 hover:underline' %>
+        <%= link_to 'Reject', reject_article_comment_path(@article, comment), method: :patch, class: 'text-red-500 hover:underline' %>
+      </div>
+    <% elsif comment.status == 'rejected' %>
+      <p class="text-red-500">This comment has been rejected.</p>
+    <% end %>
+    <div class="flex space-x-2 mt-2">
+      <%= link_to 'Edit', edit_article_comment_path(@article, comment), class: 'text-blue-500 hover:underline' %>
+      <%= link_to 'Delete', article_comment_path(@article, comment), method: :delete, data: { confirm: 'Are you sure?' }, class: 'text-red-500 hover:underline' %>
+    </div>
+  <% end %>
+
+  <div class="ml-4">
+    <%= render 'comments/form', article: comment.article, comment: comment.article.comments.build(parent_comment_id: comment.id) %>
+    <% comment.replies.each do |reply| %>
+      <div class="border-l border-gray-300 pl-4 mt-4">
+        <p>
+          <strong class="text-lg text-gray-700"><%= reply.user.username %>:</strong>
+          <%= reply.content %>
+        </p>
+        <% if reply.user == current_user %>
+          <div class="flex space-x-2 mt-2">
+            <%= link_to 'Edit', edit_article_comment_path(reply.article, reply), class: 'text-blue-500 hover:underline' %>
+            <%= button_to 'Delete', article_comment_path(reply.article, reply), method: :delete, data: { confirm: 'Are you sure?' }, class: 'text-red-500 hover:underline' %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

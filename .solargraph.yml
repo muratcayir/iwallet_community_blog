@@ -1,0 +1,18 @@
+# Solargraph configuration file
+include:
+  - "**/*.rb"
+exclude:
+  - spec/**/*
+  - test/**/*
+require:
+  - rubocop # Rubocop'u gerektirir
+plugins:
+  - rubocop # Rubocop plugin'ini kullanır
+completion:
+  # Kod tamamlama ayarları
+  require_paths: []
+diagnostics:
+  rubocop:
+    # Rubocop ayarlarını yapılandırır
+    enabled: true
+    auto_correct: false # Otomatik düzeltmeleri kapatır

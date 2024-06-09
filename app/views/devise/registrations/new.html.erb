@@ -1,0 +1,41 @@
+<div class="flex items-center justify-center  bg-gray-800">
+  <div class="w-full max-w-md bg-white shadow-2xl rounded-xl p-10">
+    <p class="w-full text-4xl font-medium text-center leading-snug font-serif">Sign up for an account</p>
+    <div class="w-full mt-6 space-y-8">
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), local: true, html: { class: "space-y-8" }) do |form| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
+        <div class="relative">
+          <p class="bg-white pt-0 pr-2 pb-0 pl-2 -mt-3 ml-2 font-medium text-gray-600 absolute">Email</p>
+          <%= form.email_field :email, autofocus: true, autocomplete: "email", placeholder: "example@example.com", class: "border placeholder-gray-400 focus:outline-none focus:border-black w-full pt-4 pr-4 pb-4 pl-4 mt-2 text-base block bg-white border-gray-300 rounded-md" %>
+          <% if resource.errors[:email].any? %>
+            <div class="text-red-600"><%= resource.errors[:email].join(", ") %></div>
+          <% end %>
+        </div>
+
+        <div class="relative">
+          <p class="bg-white pt-0 pr-2 pb-0 pl-2 -mt-3 ml-2 font-medium text-gray-600 absolute">Password <%= @minimum_password_length ? "(#{@minimum_password_length} characters minimum)" : "" %></p>
+          <%= form.password_field :password, autocomplete: "new-password", placeholder: "Password", class: "border placeholder-gray-400 focus:outline-none focus:border-black w-full pt-4 pr-4 pb-4 pl-4 mt-2 text-base block bg-white border-gray-300 rounded-md" %>
+          <% if resource.errors[:password].any? %>
+            <div class="text-red-600"><%= resource.errors[:password].join(", ") %></div>
+          <% end %>
+        </div>
+
+        <div class="relative">
+          <p class="bg-white pt-0 pr-2 pb-0 pl-2 -mt-3 ml-2 font-medium text-gray-600 absolute">Password Confirmation</p>
+          <%= form.password_field :password_confirmation, autocomplete: "new-password", placeholder: "Confirm Password", class: "border placeholder-gray-400 focus:outline-none focus:border-black w-full pt-4 pr-4 pb-4 pl-4 mt-2 text-base block bg-white border-gray-300 rounded-md" %>
+          <% if resource.errors[:password_confirmation].any? %>
+            <div class="text-red-600"><%= resource.errors[:password_confirmation].join(", ") %></div>
+          <% end %>
+        </div>
+
+        <div class="relative">
+          <%= form.submit "Sign up", class: "w-full inline-block pt-4 pr-5 pb-4 pl-5 text-xl font-medium text-center text-white bg-gray-500 rounded-lg transition duration-200 hover:bg-gray-700 ease" %>
+        </div>
+      <% end %>
+      <p class="mt-4 text-center text-gray-600">
+        Already have an account? 
+        <%= link_to 'Sign in', new_session_path(resource_name), class: 'text-black-600 hover:text-gray-800' %>
+      </p>
+    </div>
+  </div>
+</div>

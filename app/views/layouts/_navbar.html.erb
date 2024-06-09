@@ -1,0 +1,63 @@
+    <header class="fixed top-0 w-full bg-gray-800 text-white p-4 z-10 font-roboto text-base">
+      <div class="container mx-auto flex items-center justify-between">
+        <div class="flex items-center">
+          <h1 class="text-2xl">
+            <%= link_to 'Welcome', root_path, class: "hover:text-gray-400" %>
+          </h1>
+        </div>
+        <div class="flex items-center ml-auto">
+          <nav class="flex items-center space-x-4 mr-4">
+            <%= link_to 'Articles', articles_path, class: 'text-white hover:text-gray-400' %>
+            <% if user_signed_in? %>
+              <%= link_to 'Add New Article', new_article_path, class: 'text-white hover:text-gray-400' %>
+            <% end %>
+          </nav>
+          <div class="relative ml-4">
+            <% if user_signed_in? %>
+              <button id="dropdownButton" type="button" onclick="toggleMenu()" class="pb-5 py-3 px-4 inline-flex items-center gap-x-2 text-white hover:text-gray-400">
+                <span class="text-base"><%= current_user.username %></span>
+                <i class="fas fa-chevron-down"></i>
+              </button>
+              <ul id="dropdownMenu" class="hidden absolute right-0 mt-2 w-48 bg-white text-gray-700 rounded-lg shadow-lg">
+                <li>
+                  <%= link_to user_path(current_user.username), class: "flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-gray-800 hover:bg-gray-100" do %>
+                    <i class="fas fa-user"></i>
+                    Profile
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to edit_user_path(current_user.username), class: "flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-gray-800 hover:bg-gray-100" do %>
+                    <i class="fas fa-cog"></i>
+                    Account Settings
+                  <% end %>
+                </li>
+                <li>
+                  <%= button_to destroy_user_session_path, method: :delete, class: "flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-gray-800 hover:bg-gray-100" do %>
+                    <i class="fas fa-sign-out-alt"></i>
+                    Sign Out
+                  <% end %>
+                </li>
+              </ul>
+            <% else %>
+              <button id="dropdownButton" type="button" onclick="toggleMenu()" class="py-3 px-4 inline-flex items-center gap-x-2 text-white hover:text-gray-400">
+                <i class="fas fa-user"></i>
+              </button>
+              <ul id="dropdownMenu" class="hidden absolute right-0 mt-2 w-48 bg-white text-gray-700 rounded-lg shadow-lg">
+                <li>
+                  <%= link_to new_user_registration_path, class: "flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-gray-800 hover:bg-gray-100" do %>
+                    <i class="fas fa-user-plus"></i>
+                    Sign Up
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to new_user_session_path, class: "flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-gray-800 hover:bg-gray-100" do %>
+                    <i class="fas fa-sign-in-alt"></i>
+                    Sign In
+                  <% end %>
+                </li>
+              </ul>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </header>
