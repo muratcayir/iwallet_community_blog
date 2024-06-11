@@ -1,0 +1,57 @@
+<div class=" p-4">
+        <% if @query.present? %>
+        <div class="bg-white shadow-lg rounded-lg p-6 mb-8">
+            <h2 class="text-2xl font-semibold mb-4">Search Results for "<%= @query %>"</h2>
+
+            <!-- People Section -->
+            <div class="mb-4">
+                <h3 class="text-lg font-semibold">People</h3>
+                <% if @users.any? %>
+                    <% @users.each do |user| %>
+                        <div class="flex items-center space-x-2 mb-2">
+                            <a href="<%= user_path(user.username) %>" class="text-blue-500 hover:underline text-lg font-medium">
+                                <%= user.username %>
+                            </a>
+                        </div>
+                    <% end %>
+                <% else %>
+                    <p class="text-gray-500">No users found.</p>
+                <% end %>
+            </div>
+
+            <!-- Articles Section -->
+            <div class="mb-4">
+                <h3 class="text-lg font-semibold">Articles</h3>
+                <% if @articles.any? %>
+                    <% @articles.each do |article| %>
+                        <div class="mb-2">
+                            <a href="<%= article_path(article) %>" class="text-blue-500 hover:underline text-lg font-medium">
+                                <%= article.title %>
+                            </a>
+                        </div>
+                    <% end %>
+                <% else %>
+                    <p class="text-gray-500">No articles found.</p>
+                <% end %>
+            </div>
+
+            <!-- Tags Section -->
+            <div class="mb-4">
+                <h3 class="text-lg font-semibold">Tags</h3>
+                <% if @tags.any? %>
+                    <div class="flex flex-wrap gap-2">
+                        <% @tags.each do |tag| %>
+                            <a href="<%= tag_path(tag.name) %>" class="bg-gray-200 text-gray-700 px-2 py-1 rounded text-sm">
+                                <%= tag.name %>
+                            </a>
+                        <% end %>
+                    </div>
+                <% else %>
+                    <p class="text-gray-500">No tags found.</p>
+                <% end %>
+            </div>
+        </div>
+        <% else %>
+            <p class="text-gray-500">Please enter a search term.</p>
+        <% end %>
+    </div>

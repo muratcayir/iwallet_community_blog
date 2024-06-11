@@ -1,10 +1,17 @@
-<main>
-  <div id="slider" class="mb-4">
+<main style="margin-top: 10rem !important;">
+  <div id="slider">
     <div class="slider-inner">
       <div id="slider-content">
         <% @articles.each_with_index do |article, index| %>
           <div class="slide" data-slide-index="<%= index %>" style="<%= 'display: none;' if index != 0 %>">
-            <div class="meta"><%= article.tags.map(&:name).join(", ") %></div>
+            <div class="meta">
+              <% article.tags.take(3).each do |tag| %>
+                <%= link_to tag.name, tag_path(tag.name), class: 'tag-link' %>
+              <% end %>
+              <% if article.tags.size > 3 %>
+                <span>and more...</span>
+              <% end %>
+            </div>
             <h2 id="slide-title"><a href="<%= article_path(article) %>"><%= article.truncated_title %></a></h2>
             <span data-slide-title="<%= index %>">
               <%= link_to article.truncated_title, article_path(article) %>
@@ -23,4 +30,3 @@
     </div>
   </div>
 </main>
-

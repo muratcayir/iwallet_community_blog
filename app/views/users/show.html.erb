@@ -1,27 +1,28 @@
 <div class="max-w-4xl mx-auto mt-10">
   <div class="flex justify-between items-center mb-6">
-    <h1 class="text-white text-3xl font-semibold"><%= @user.username %>'s Profile</h1>
+    <h1 class="text-3xl font-semibold"><%= @user.username %>'s Profile</h1>
+     <% if @user == current_user %>
     <div class="flex space-x-4">
-      <%= link_to 'Edit Profile', edit_user_path(@user.username), class: 'bg-gray-500 text-white px-4 py-2 rounded' %>
+      <%= link_to 'Edit Profile', edit_user_path(@user.username), class: 'bg-green-500 text-white px-4 py-2 rounded' %>
+      <%= link_to 'New Add Article', new_article_path, class: 'border border-gray-500 text-gray-500 px-4 py-2 rounded' %>
     </div>
+    <% end %>
   </div>
 
   <div class="flex space-x-4 mb-6">
-    <%= link_to 'Drafts', drafts_user_path(@user.username), class: 'text-white hover:text-black border-b-2 border-transparent hover:border-black' %>
-    <%= link_to 'Published', published_user_path(@user.username), class: 'text-white hover:text-black border-b-2 border-transparent hover:border-black' %>
-    <%= link_to 'Your Comments', your_comments_user_path(@user.username), class: 'text-white hover:text-black border-b-2 border-transparent hover:border-black' %>
-    <%= link_to 'Comments on Your Articles', comments_on_your_articles_user_path(@user.username), class: 'text-white hover:text-black border-b-2 border-transparent hover:border-black' %>
+    <%= link_to 'Published', published_user_path(@user.username), class: 'text-gray-500 hover:text-black border-b-2 border-transparent hover:border-black' %>
+    <% if @user == current_user %>
+    <%= link_to 'Drafts', drafts_user_path(@user.username), class: 'text-gray-500 hover:text-black border-b-2 border-transparent hover:border-black' %>
+    <%= link_to 'Your Comments', your_comments_user_path(@user.username), class: 'text-gray-500 hover:text-black border-b-2 border-transparent hover:border-black' %>
+    <%= link_to 'Comments on Your Articles', comments_on_your_articles_user_path(@user.username), class: 'text-gray-500 hover:text-black border-b-2 border-transparent hover:border-black' %>
+    <% end %>
   </div>
 
   <div id="content-section" class="mt-8">
-    <% if @draft_articles %>
-      <%= render 'articles_list', articles: @draft_articles %>
-    <% elsif @published_articles %>
-      <%= render 'articles_list', articles: @published_articles %>
-    <% elsif @your_comments %>
-      <%= render 'comments_list', comments: @your_comments %>
-    <% elsif @comments_on_your_articles %>
-      <%= render 'comments_list', comments: @comments_on_your_articles %>
+    <% if @articles %>
+      <%= render 'articles_list', articles: @articles %>
+    <% elsif @comments %>
+      <%= render 'comments_list', comments: @comments %>
     <% end %>
   </div>
 </div>

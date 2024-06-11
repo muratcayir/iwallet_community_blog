@@ -8,7 +8,7 @@ class ArticlesController < ApplicationController
   end
 
   def show
-    @comments = @article.comments.includes(:user).where(parent_comment_id: nil)
+    @comments = @article.comments.approved.includes(:user).where(parent_comment_id: nil)
   end
 
   def new
@@ -25,9 +25,7 @@ class ArticlesController < ApplicationController
     end
   end
 
-  def edit
-    redirect_to @article, alert: 'Published articles cannot be edited or deleted.' if @article.published?
-  end
+  def edit; end
 
   def update
     if @article.update(article_params)
@@ -39,12 +37,8 @@ class ArticlesController < ApplicationController
   end
 
   def destroy
-    if @article.published?
-      redirect_to @article, alert: 'Published articles cannot be deleted.'
-    else
-      @article.destroy
-      redirect_to articles_url, notice: 'Article was successfully destroyed.', allow_other_host: true
-    end
+    @article.destroy
+    redirect_to articles_url, notice: 'Article was successfully destroyed.', allow_other_host: true
   end
 
   private
@@ -54,9 +48,9 @@ class ArticlesController < ApplicationController
   end
 
   def check_published
-    if @article.published?
-      redirect_to @article, alert: 'Published articles cannot be edited or deleted.'
-    end
+    return unless @article.published?
+
+    redirect_to @article, alert: 'Published articles cannot be edited or deleted.'
   end
 
   def update_tags(article)
@@ -64,7 +58,6 @@ class ArticlesController < ApplicationController
   end
 
   def article_params
-    params.require(:article).permit(:title, :content, :published, tag_ids: [])
+    params.require(:article).permit(:title, :content, :status, tag_ids: [])
   end
 end
- 

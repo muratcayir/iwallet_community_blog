@@ -2,6 +2,6 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 @import "./styles";
-@import "./card";
 @import "./form";
+@import "./search";
 @import 'actiontext.css';
