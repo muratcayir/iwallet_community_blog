@@ -1,0 +1,123 @@
+tr:
+  devise:
+    sessions:
+      new:
+        sign_in: "Giriş Yap"
+        email: "E-posta"
+        password: "Şifre"
+        sign_in_button: "Giriş Yap"
+        do_not_have_account: "Hesabınız yok mu?"
+        sign_up: "Kayıt Ol"
+        sign_in_github: "Github ile Giriş Yap"
+        sign_up_github: "Github ile Kayıt Ol"
+    registrations:
+      new:
+        sign_up: "Bir hesap oluştur"
+        email: "E-posta"
+        password: "Şifre"
+        characters_minimum: "karakter minimum"
+        password_confirmation: "Şifre Onayı"
+        password_placeholder: "Şifre"
+        password_confirmation_placeholder: "Şifreyi Onayla"
+        sign_up_button: "Kayıt Ol"
+        already_have_account: "Zaten bir hesabınız var mı?"
+        sign_in: "Giriş Yap"
+      edit:
+        email: "E-posta"
+        password: "Şifre"
+        current_password: "Mevcut Şifre"
+        password_confirmation: "Şifre Onayı"
+        update_button: "Güncelle"
+        cancel_account: "Hesabımı iptal et"
+        are_you_sure: "Emin misiniz?"
+        back: "Geri"
+    passwords:
+      new:
+        forgot_password: "Şifrenizi mi unuttunuz?"
+        send_reset_instructions: "Şifre sıfırlama talimatlarını gönder"
+    confirmations:
+      new:
+        resend_confirmation: "Onay mailini tekrar gönder"
+        resend_confirmation_instructions: "Onay mailini almak için e-posta adresinizi girin"
+
+  time:
+    formats:
+      default: "%d-%m-%Y %H:%M"
+      short: "%d %b %H:%M"
+      long: "%d %B %Y %H:%M"
+    distance_in_words:
+      less_than_x_seconds:
+        one: "1 saniyeden az"
+        other: "%{count} saniyeden az"
+      x_seconds:
+        one: "1 saniye"
+        other: "%{count} saniye önce"
+      half_a_minute: "yarım dakika önce"
+      less_than_x_minutes:
+        one: "1 dakikadan az"
+        other: "%{count} dakikadan az"
+      x_minutes:
+        one: "1 dakika önce"
+        other: "%{count} dakika önce"
+      about_x_hours:
+        one: "yaklaşık 1 saat önce"
+        other: "yaklaşık %{count} saat önce"
+      x_days:
+        one: "1 gün önce"
+        other: "%{count} gün önce"
+      about_x_months:
+        one: "yaklaşık 1 ay önce"
+        other: "yaklaşık %{count} ay önce"
+      x_months:
+        one: "1 ay önce"
+        other: "%{count} ay önce"
+      about_x_years:
+        one: "yaklaşık 1 yıl önce"
+        other: "yaklaşık %{count} yıl önce"
+      over_x_years:
+        one: "1 yıldan fazla önce"
+        other: "%{count} yıldan fazla önce"
+      almost_x_years:
+        one: "neredeyse 1 yıl önce"
+        other: "neredeyse %{count} yıl önce"
+  nav:
+    welcome: "Hoşgeldiniz"
+    articles: "Makaleler"
+    add_article: "Yeni Makale Ekle"
+    profile: "Profil"
+    settings: "Hesap Ayarları"
+    sign_out: "Çıkış Yap"
+    sign_up: "Kayıt Ol"
+    sign_in: "Giriş Yap"
+  search:
+    placeholder: "Arama..."
+  footer:
+    contact: "İletişim"
+    about: "Hakkında"
+    privacy: "Gizlilik"
+    terms: "Şartlar"
+  articles:
+    title: "Başlık"
+    content: "İçerik"
+    tags: "Etiketler"
+    author: "Yazar"
+    published_at: "Yayınlanma Tarihi"
+    likes: "Beğeniler"
+    comments: "Yorumlar"
+    no_articles: "Henüz makale yok. Lütfen daha sonra tekrar kontrol edin."
+  comments:
+    approve: "Onayla"
+    reject: "Reddet"
+    pending: "Beklemede"
+    approved: "Onaylandı"
+    rejected: "Reddedildi"
+    your_comments: "Yorumlarınız"
+    comments_on_your_articles: "Makalelerinizdeki Yorumlar"
+  profile:
+    your_articles: "Makaleleriniz"
+    draft_articles: "Taslak Makaleler"
+    published_articles: "Yayınlanmış Makaleler"
+    edit_profile: "Profili Düzenle"
+  errors:
+    not_found: "Bulunamadı"
+    unauthorized: "Yetkisiz Erişim"

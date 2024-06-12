@@ -15,7 +15,7 @@
                 <%= article.user.username %>
               </span>
               <span class="text-sm text-gray-500">
-                <%= time_tag article.created_at, "data-local": "time-ago" %>
+                <%= time_tag article.created_at, format: :long, data: { local: "time-ago" } %>
               </span>
             </div>
           </div>

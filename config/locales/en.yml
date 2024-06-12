@@ -1,31 +1,122 @@
-# Files in the config/locales directory are used for internationalization and
-# are automatically loaded by Rails. If you want to use locales other than
-# English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t "hello"
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t("hello") %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# To learn more about the API, please read the Rails Internationalization guide
-# at https://guides.rubyonrails.org/i18n.html.
-#
-# Be aware that YAML interprets the following case-insensitive strings as
-# booleans: `true`, `false`, `on`, `off`, `yes`, `no`. Therefore, these strings
-# must be quoted to be interpreted as strings. For example:
-#
-#     en:
-#       "yes": yup
-#       enabled: "ON"
-
 en:
-  hello: "Hello world"
+  devise:
+    sessions:
+      new:
+        sign_in: "Sign In"
+        email: "Email"
+        password: "Password"
+        sign_in_button: "Sign In"
+        do_not_have_account: "Don't have an account?"
+        sign_up: "Sign Up"
+        sign_in_github: "Sign in with Github"
+        sign_up_github: "Sign un with Github"
+    registrations:
+      new:
+        sign_up: "Sign up for an account"
+        email: "Email"
+        password: "Password"
+        characters_minimum: "characters minimum"
+        password_confirmation: "Password Confirmation"
+        password_placeholder: "Password"
+        password_confirmation_placeholder: "Confirm Password"
+        sign_up_button: "Sign up"
+        already_have_account: "Already have an account?"
+        sign_in: "Sign in"
+      edit:
+        email: "Email"
+        password: "Password"
+        current_password: "Current Password"
+        password_confirmation: "Password Confirmation"
+        update_button: "Update"
+        cancel_account: "Cancel my account"
+        are_you_sure: "Are you sure?"
+        back: "Back"
+    passwords:
+      new:
+        forgot_password: "Forgot your password?"
+        send_reset_instructions: "Send reset instructions"
+    confirmations:
+      new:
+        resend_confirmation: "Resend confirmation email"
+        resend_confirmation_instructions: "Enter your email address to receive the confirmation email again"
+  time:
+    formats:
+      default: "%d-%m-%Y %H:%M"
+      short: "%d %b %H:%M"
+      long: "%d %B %Y %H:%M"
+    distance_in_words:
+      less_than_x_seconds:
+        one: "less than a second ago"
+        other: "less than %{count} seconds ago"
+      x_seconds:
+        one: "1 second ago"
+        other: "%{count} seconds ago"
+      half_a_minute: "half a minute"
+      less_than_x_minutes:
+        one: "less than a minute ago"
+        other: "less than %{count} minutes ago"
+      x_minutes:
+        one: "1 minute ago"
+        other: "%{count} minutes ago"
+      about_x_hours:
+        one: "about 1 hour ago"
+        other: "about %{count} hours ago"
+      x_days:
+        one: "1 day ago"
+        other: "%{count} days ago"
+      about_x_months:
+        one: "about 1 month ago"
+        other: "about %{count} months ago"
+      x_months:
+        one: "1 month ago "
+        other: "%{count} months ago"
+      about_x_years:
+        one: "about 1 year ago"
+        other: "about %{count} years ago"
+      over_x_years:
+        one: "over 1 year ago"
+        other: "over %{count} years ago"
+      almost_x_years:
+        one: "almost 1 year ago"
+        other: "almost %{count} years ago"
+  nav:
+    welcome: "Welcome"
+    articles: "Articles"
+    add_article: "Add New Article"
+    profile: "Profile"
+    settings: "Account Settings"
+    sign_out: "Sign Out"
+    sign_up: "Sign Up"
+    sign_in: "Sign In"
+  search:
+    placeholder: "Search..."
+  footer:
+    contact: "Contact"
+    about: "About"
+    privacy: "Privacy"
+    terms: "Terms"
+  articles:
+    title: "Title"
+    content: "Content"
+    tags: "Tags"
+    author: "Author"
+    published_at: "Published At"
+    likes: "Likes"
+    comments: "Comments"
+    no_articles: "No articles available yet. Please check back later."
+  comments:
+    approve: "Approve"
+    reject: "Reject"
+    pending: "Pending"
+    approved: "Approved"
+    rejected: "Rejected"
+    your_comments: "Your Comments"
+    comments_on_your_articles: "Comments on Your Articles"
+  profile:
+    your_articles: "Your Articles"
+    draft_articles: "Draft Articles"
+    published_articles: "Published Articles"
+    edit_profile: "Edit Profile"
+  errors:
+    not_found: "Not Found"
+    unauthorized: "Unauthorized Access"

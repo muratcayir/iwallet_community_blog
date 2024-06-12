@@ -2,7 +2,7 @@
   <div class="container mx-auto flex items-center justify-between">
     <div class="flex items-center">
       <h1 class="text-2xl">
-        <%= link_to 'Welcome', root_path, class: "hover:text-gray-400" %>
+        <%= link_to t('nav.welcome'), root_path, class: "hover:text-gray-400" %>
       </h1>
     </div>
     <div class="flex items-center ml-auto space-x-4 navbar-search">
@@ -11,16 +11,38 @@
           <input type="text" name="query" id="search_input" placeholder="Search..." value="<%= params[:query] %>" class="search-input bg-gray-700 text-white p-2 rounded-lg">
           <button type="submit" class="search-button p-2"><i class="fas fa-search"></i></button>
         <% end %>
-        <div id="search_preview" class=" text-black g mt-2 hidden"></div>
       </div>
-
-
       <nav class="flex items-center space-x-4">
-        <%= link_to 'Articles', articles_path, class: 'text-white hover:text-gray-400' %>
-        <% if user_signed_in? %>
-          <%= link_to 'Add New Article', new_article_path, class: 'text-white hover:text-gray-400' %>
-        <% end %>
+         <%= link_to articles_path, class: 'text-white hover:text-gray-400' do %>
+           <i class="fas fa-newspaper"></i> <%= t('nav.articles') %>
+         <% end %>
+         <% if user_signed_in? %>
+           <%= link_to new_article_path, class: 'text-white hover:text-gray-400' do %>
+             <i class="fas fa-plus-circle"></i> <%= t('nav.add_article') %>
+           <% end %>
+         <% end %>
       </nav>
+      <div class="relative ml-4">
+        <button id="languageDropdownButton" type="button" onclick="toggleLanguageMenu()" class="py-3 px-4 inline-flex items-center gap-x-2 text-white hover:text-gray-400">
+          <% if I18n.locale == :tr %>
+            <span> <img src="<%= asset_path('tr_flag.gif') %>" alt="Türkçe" class="w-6 h-4 mr-2"></span>
+          <% else %>
+            <span><img src="<%= asset_path('en_flag.gif') %>" alt="Türkçe" class="w-6 h-4 mr-2"></span>
+          <% end %>
+        </button>
+        <ul id="languageDropdownMenu" class="hidden absolute right-0 mt-2 w-48 bg-white text-gray-700 rounded-lg shadow-lg">
+          <li>
+            <%= link_to change_locale_path(:tr), class: "flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-gray-800 hover:bg-gray-100" do %>
+              <img src="<%= asset_path('tr_flag.gif') %>" alt="Türkçe" class="w-6 h-6 mr-2"> Türkçe
+            <% end %>
+          </li>
+          <li>
+            <%= link_to change_locale_path(:en), class: "flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-gray-800 hover:bg-gray-100" do %>
+              <img src="<%= asset_path('en_flag.gif') %>" alt="English" class="w-6 h-6 mr-2"> English
+            <% end %>
+          </li>
+        </ul>
+      </div>
       <div class="relative ml-4">
         <% if user_signed_in? %>
           <button id="dropdownButton" type="button" onclick="toggleMenu()" class="pb-5 py-3 px-4 inline-flex items-center gap-x-2 text-white hover:text-gray-400">
@@ -31,19 +53,19 @@
             <li>
               <%= link_to user_path(current_user.username), class: "flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-gray-800 hover:bg-gray-100" do %>
                 <i class="fas fa-user"></i>
-                Profile
+                <%= t('nav.profile') %>
               <% end %>
             </li>
             <li>
               <%= link_to edit_user_path(current_user.username), class: "flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-gray-800 hover:bg-gray-100" do %>
                 <i class="fas fa-cog"></i>
-                Account Settings
+                <%= t('nav.settings') %>
               <% end %>
             </li>
             <li>
               <%= button_to destroy_user_session_path, method: :delete, class: "flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-gray-800 hover:bg-gray-100" do %>
                 <i class="fas fa-sign-out-alt"></i>
-                Sign Out
+                <%= t('nav.sign_out') %>
               <% end %>
             </li>
           </ul>
@@ -55,13 +77,13 @@
             <li>
               <%= link_to new_user_registration_path, class: "flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-gray-800 hover:bg-gray-100" do %>
                 <i class="fas fa-user-plus"></i>
-                Sign Up
+                <%= t('nav.sign_up') %>
               <% end %>
             </li>
             <li>
               <%= link_to new_user_session_path, class: "flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-gray-800 hover:bg-gray-100" do %>
                 <i class="fas fa-sign-in-alt"></i>
-                Sign In
+                <%= t('nav.sign_in') %>
               <% end %>
             </li>
           </ul>
@@ -77,23 +99,8 @@
     menu.classList.toggle('hidden');
   }
 
-  document.addEventListener('DOMContentLoaded', function() {
-    const searchInput = document.getElementById('search_input');
-    const searchPreview = document.getElementById('search_preview');
-
-    searchInput.addEventListener('input', function() {
-      const query = searchInput.value;
-
-      if (query.length >= 3) {
-        fetch(`/search?query=${query}`)
-          .then(response => response.text())
-          .then(html => {
-            searchPreview.innerHTML = html;
-            searchPreview.classList.remove('hidden');
-          });
-      } else {
-        searchPreview.classList.add('hidden');
-      }
-    });
-  });
+  function toggleLanguageMenu() {
+    var menu = document.getElementById('languageDropdownMenu');
+    menu.classList.toggle('hidden');
+  }
 </script>

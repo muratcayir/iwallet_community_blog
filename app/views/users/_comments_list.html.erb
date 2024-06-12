@@ -19,7 +19,7 @@
             </p>
             <div class="text-sm text-gray-500 mb-4">
               <span>Posted by <%= comment.user.username %></span>
-              <span class="ml-4"><%= time_tag comment.created_at, "data-local": "time-ago" %></span>
+              <span class="ml-4"><%= time_tag article.created_at, format: :long, data: { local: "time-ago" } %></span>
             </div>
             <% if comment.status == 'approved' %>
               <p class="text-green-500">Approved</p>

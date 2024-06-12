@@ -1,11 +1,17 @@
 Rails.application.routes.draw do
-  resources :tags, only: [:show]
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
+
+  namespace :api do
+    namespace :v1 do
+      resources :articles, only: %i[index show]
+    end
+  end
+
+  resources :tags, only: [:show], param: :name
 
   get 'search', to: 'search#index', as: 'search'
   get 'search_preview', to: 'search#preview'
-  get 'tags/:name', to: 'tags#show', as: 'tag_name'
-
-  devise_for :users
+  get 'change_locale/:locale', to: 'application#change_locale', as: :change_locale
 
   resources :users, param: :username, only: %i[show edit update] do
     member do
