@@ -74,6 +74,10 @@ group :test do
   gem 'shoulda-matchers', '~> 5.0'
 end
 
+group :production do
+  gem 'uglifier', '>= 1.3.0'
+end
+
 gem 'devise', '~> 4.9'
 
 gem 'rack-cors', '~> 2.0'
