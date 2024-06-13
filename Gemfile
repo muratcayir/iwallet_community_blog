@@ -2,8 +2,9 @@ source 'https://rubygems.org'
 
 ruby '3.3.2'
 gem 'active_model_serializers'
+gem 'dotenv-rails', groups: %i[development test]
 gem 'omniauth'
-gem 'omniauth-github', github: 'omniauth/omniauth-github', branch: 'master'
+gem 'omniauth-github'
 gem 'omniauth-rails_csrf_protection'
 gem 'rails_12factor'
 

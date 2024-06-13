@@ -3,20 +3,17 @@ default: &default
   encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
+  username: <%= ENV['DB_USERNAME'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
+  host: <%= ENV['DB_HOST'] %>
 
 development:
   <<: *default
-  database: community_blog_development
-  username: postgres
-  password: 1234
-  host: localhost
+  database: <%= ENV['DB_NAME_DEVELOPMENT'] %>
 
 test:
   <<: *default
-  database: community_blog_test
-  username: postgres
-  password: 1234
-  host: localhost
+  database: <%= ENV['DB_NAME_TEST'] %>
 
 production:
   <<: *default
