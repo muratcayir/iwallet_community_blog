@@ -3,9 +3,7 @@ source 'https://rubygems.org'
 ruby '3.3.2'
 gem 'active_model_serializers'
 gem 'dotenv-rails', groups: %i[development test]
-gem 'omniauth'
-gem 'omniauth-github'
-gem 'omniauth-rails_csrf_protection'
+
 gem 'rails_12factor'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
@@ -80,3 +78,7 @@ gem 'devise', '~> 4.9'
 gem 'rack-cors', '~> 2.0'
 
 gem 'jsbundling-rails', '~> 1.3'
+
+gem 'omniauth'
+gem 'omniauth-github', '~> 2.0.0'
+gem 'omniauth-rails_csrf_protection'
