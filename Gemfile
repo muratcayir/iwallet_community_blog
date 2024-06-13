@@ -6,7 +6,7 @@ gem 'omniauth'
 gem 'omniauth-github', github: 'omniauth/omniauth-github', branch: 'master'
 gem 'omniauth-rails_csrf_protection'
 gem 'rails_12factor'
-gem 'sass-rails'
+
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem 'rails', '~> 7.1.2'
 
@@ -72,10 +72,6 @@ group :test do
   gem 'faker'
   gem 'selenium-webdriver'
   gem 'shoulda-matchers', '~> 5.0'
-end
-
-group :production do
-  gem 'uglifier', '>= 1.3.0'
 end
 
 gem 'devise', '~> 4.9'
