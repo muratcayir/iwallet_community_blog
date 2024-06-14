@@ -74,7 +74,7 @@ group :test do
 end
 
 gem 'devise', '~> 4.9'
-
+gem 'mini_magick'
 gem 'rack-cors', '~> 2.0'
 
 gem 'jsbundling-rails', '~> 1.3'

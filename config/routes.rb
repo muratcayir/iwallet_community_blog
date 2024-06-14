@@ -7,11 +7,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :tags, only: [:show], param: :name
-
-  get 'search', to: 'search#index', as: 'search'
-  get 'search_preview', to: 'search#preview'
-  get 'change_locale/:locale', to: 'application#change_locale', as: :change_locale
+  resources :tags, only: %i[index show], param: :name
 
   resources :users, param: :username, only: %i[show edit update] do
     member do
@@ -31,6 +27,11 @@ Rails.application.routes.draw do
     end
     resources :likes, only: %i[create destroy]
   end
+
+  get 'search', to: 'search#index', as: 'search'
+  get 'search_preview', to: 'search#preview'
+  get 'change_locale/:locale', to: 'application#change_locale', as: :change_locale
+  get 'tags/search', to: 'tags#search'
 
   root 'welcome#index'
 end

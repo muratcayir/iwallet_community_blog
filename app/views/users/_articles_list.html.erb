@@ -1,4 +1,4 @@
-<h2 class="text-xl font-semibold mb-2"><%= articles.any? ? articles.first.published? ? 'Published Articles' : 'Draft Articles' : 'Articles' %></h2>
+
 <% if articles.empty? %>
   <div class="text-center text-gray-500">
     <p>No articles available yet. Please check back later.</p>
@@ -6,7 +6,7 @@
   </div>
 <% else %>
   <% articles.each do |article| %>
-    <div class="bg-white p-6 rounded-lg shadow-lg mb-6">
+    <div class="mb-6">
       <div class="flex items-start space-x-4">
         <div class="flex-1">
           <div class="flex justify-between items-center">

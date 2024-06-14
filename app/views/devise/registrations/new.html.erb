@@ -1,10 +1,10 @@
-<div class="flex items-center justify-center bg-gray-800 mt-10">
-  <div class="w-full max-w-md bg-white shadow-2xl rounded-xl p-10">
-    <p class="w-full text-4xl font-medium text-center leading-snug font-serif mb-6"><%= t('devise.sessions.new.sign_in') %></p>
+<div class="flex items-center justify-center  mt-10">
+  <div class="p-10">
+    <p class="w-full text-4xl font-medium text-center leading-snug font-serif mb-6"><%= t('devise.sessions.new.sign_up') %></p>
     <div class="flex justify-center mb-6">
       <%= link_to  user_github_omniauth_authorize_path, method: :post, data: { turbo: 'false' }, class: 'flex items-center bg-gray-800 text-white font-bold py-2 px-4 rounded-lg hover:bg-gray-900 transition duration-300' do %>
         <i class="fab fa-github mr-2"></i> 
-        <span><%= t('devise.sessions.new.sign_in_github') %></span>
+        <span><%= t('devise.sessions.new.sign_up_github') %></span>
       <% end %>
     </div>
   </div>

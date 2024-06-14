@@ -27,7 +27,7 @@ class Article < ApplicationRecord
   end
 
   def liked_by?(user)
-    likes.exists?(user: user)
+    likes.exists?(user:)
   end
 
   def likes_count
@@ -39,11 +39,11 @@ class Article < ApplicationRecord
   end
 
   def tag_list
-    tags.map(&:name).join(", ")
+    tags.map(&:name).join(', ')
   end
 
   def tag_list=(names)
-    self.tags = names.split(",").map do |n|
+    self.tags = names.split(',').map do |n|
       Tag.where(name: n.strip).first_or_create!
     end
   end

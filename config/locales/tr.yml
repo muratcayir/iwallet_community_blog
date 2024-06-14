@@ -1,5 +1,104 @@
 tr:
   devise:
+    confirmations:
+      confirmed: "E-posta adresiniz başarıyla doğrulandı."
+      send_instructions: "E-posta adresinizi doğrulamak için talimatların yer aldığı bir e-posta alacaksınız."
+      send_paranoid_instructions: "E-posta adresiniz veri tabanımızda mevcutsa, e-posta adresinizi doğrulamak için talimatların yer aldığı bir e-posta alacaksınız."
+      new:
+        resend_confirmation: "Onay mailini tekrar gönder"
+        resend_confirmation_instructions: "Onay mailini almak için e-posta adresinizi girin"
+    failure:
+      already_authenticated: "Zaten giriş yapmışsınız."
+      inactive: "Hesabınız henüz etkinleştirilmemiş."
+      invalid: "Geçersiz %{authentication_keys} veya şifre."
+      locked: "Hesabınız kilitlenmiş."
+      last_attempt: "Hesabınızın kilitlenmesinden önce bir deneme hakkınız kaldı."
+      not_found_in_database: "Geçersiz %{authentication_keys} veya şifre."
+      timeout: "Oturumunuz sona erdi. Devam etmek için tekrar giriş yapın."
+      unauthenticated: "Devam etmeden önce giriş yapmanız veya kaydolmanız gerekiyor."
+      unconfirmed: "Devam etmeden önce e-posta adresinizi doğrulamalısınız."
+    mailer:
+      confirmation_instructions:
+        subject: "Doğrulama talimatları"
+      reset_password_instructions:
+        subject: "Şifre sıfırlama talimatları"
+      unlock_instructions:
+        subject: "Kilidi açma talimatları"
+      email_changed:
+        subject: "E-posta Adresi Değiştirildi"
+      password_change:
+        subject: "Şifre Değiştirildi"
+    omniauth_callbacks:
+      failure: '%{kind} ile kimlik doğrulama başarısız oldu: "%{reason}".'
+      success: "%{kind} hesabı ile başarıyla kimlik doğrulandı."
+    passwords:
+      no_token: "Şifre sıfırlama e-postasından gelmedikçe bu sayfaya erişemezsiniz. Şifre sıfırlama e-postasından geldiyseniz, sağlanan tam URL'yi kullandığınızdan emin olun."
+      send_instructions: "Şifrenizi nasıl sıfırlayacağınıza dair talimatların yer aldığı bir e-posta alacaksınız."
+      send_paranoid_instructions: "E-posta adresiniz veri tabanımızda mevcutsa, şifre kurtarma bağlantısının yer aldığı bir e-posta alacaksınız."
+      updated: "Şifreniz başarıyla değiştirildi. Şimdi giriş yaptınız."
+      updated_not_active: "Şifreniz başarıyla değiştirildi."
+      new:
+        forgot_password: "Şifrenizi mi unuttunuz?"
+        send_reset_instructions: "Şifre sıfırlama talimatlarını gönder"
+    registrations:
+      destroyed: "Hoşça kal! Hesabınız başarıyla iptal edildi. Yakında tekrar görüşmek dileğiyle."
+      signed_up: "Hoş geldiniz! Başarıyla kaydoldunuz."
+      signed_up_but_inactive: "Başarıyla kaydoldunuz. Ancak, hesabınız henüz etkinleştirilmediği için giriş yapamadık."
+      signed_up_but_locked: "Başarıyla kaydoldunuz. Ancak, hesabınız kilitli olduğu için giriş yapamadık."
+      signed_up_but_unconfirmed: "E-posta adresinize bir doğrulama bağlantısı içeren bir mesaj gönderildi. Hesabınızı etkinleştirmek için bağlantıyı takip edin."
+      update_needs_confirmation: "Hesabınızı başarıyla güncellediniz, ancak yeni e-posta adresinizi doğrulamamız gerekiyor. Lütfen e-posta adresinizi kontrol edin ve yeni e-posta adresinizi doğrulamak için bağlantıyı takip edin."
+      updated: "Hesabınız başarıyla güncellendi."
+      updated_but_not_signed_in: "Hesabınız başarıyla güncellendi, ancak şifreniz değiştirildiği için tekrar giriş yapmanız gerekiyor."
+      new:
+        sign_up: "Bir hesap oluştur"
+        email: "E-posta"
+        password: "Şifre"
+        characters_minimum: "karakter minimum"
+        password_confirmation: "Şifre Onayı"
+        password_placeholder: "Şifre"
+        password_confirmation_placeholder: "Şifreyi Onayla"
+        sign_up_button: "Kayıt Ol"
+        already_have_account: "Zaten bir hesabınız var mı?"
+        sign_in: "Giriş Yap"
+        sign_in_github: "Github ile Giriş Yap"
+        sign_up_github: "Github ile Kayıt Ol"
+      edit:
+        email: "E-posta"
+        password: "Şifre"
+        current_password: "Mevcut Şifre"
+        password_confirmation: "Şifre Onayı"
+        update_button: "Güncelle"
+        cancel_account: "Hesabımı iptal et"
+        are_you_sure: "Emin misiniz?"
+        back: "Geri"
+    sessions:
+      signed_in: "Başarıyla giriş yapıldı."
+      signed_out: "Başarıyla çıkış yapıldı."
+      already_signed_out: "Başarıyla çıkış yapıldı."
+      new:
+        sign_in: "Giriş Yap"
+        email: "E-posta"
+        password: "Şifre"
+        sign_in_button: "Giriş Yap"
+        do_not_have_account: "Hesabınız yok mu?"
+        sign_up: "Kayıt Ol"
+        sign_in_github: "Github ile Giriş Yap"
+        sign_up_github: "Github ile Kayıt Ol"
+    unlocks:
+      send_instructions: "Hesabınızın kilidini nasıl açacağınıza dair talimatların yer aldığı bir e-posta alacaksınız."
+      send_paranoid_instructions: "Hesabınız mevcutsa, kilidini nasıl açacağınıza dair talimatların yer aldığı bir e-posta alacaksınız."
+      unlocked: "Hesabınız başarıyla kilit açıldı. Devam etmek için giriş yapın."
+  errors:
+    messages:
+      already_confirmed: "zaten doğrulanmış, lütfen giriş yapmayı deneyin"
+      confirmation_period_expired: "%{period} içinde doğrulanması gerekiyor, lütfen yeni bir tane isteyin"
+      expired: "süresi dolmuş, lütfen yeni bir tane isteyin"
+      unauthorized: "Yetkisiz Erişim"
+      not_found: "bulunamadı"
+      not_locked: "kilitlenmemişti"
+      not_saved:
+        one: "Bu %{resource} kaydedilirken 1 hata oluştu:"
+        other: "Bu %{resource} kaydedilirken %{count} hata oluştu:"
     sessions:
       new:
         sign_in: "Giriş Yap"
@@ -39,7 +138,6 @@ tr:
       new:
         resend_confirmation: "Onay mailini tekrar gönder"
         resend_confirmation_instructions: "Onay mailini almak için e-posta adresinizi girin"
-
   time:
     formats:
       default: "%d-%m-%Y %H:%M"
@@ -118,6 +216,3 @@ tr:
     draft_articles: "Taslak Makaleler"
     published_articles: "Yayınlanmış Makaleler"
     edit_profile: "Profili Düzenle"
-  errors:
-    not_found: "Bulunamadı"
-    unauthorized: "Yetkisiz Erişim"
