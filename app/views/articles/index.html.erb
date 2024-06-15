@@ -9,7 +9,7 @@
     <% else %>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         <% @articles.each do |article| %>
-          <div class="overflow-hidden shadow-lg">
+          <div class="overflow-hidden ">
               <% if article.content.body.attachments.any? %>
                 <% article.content.body.attachments.each do |attachment| %>
                   <% if attachment.attachable.is_a?(ActiveStorage::Blob) && attachment.attachable.image? %>
@@ -57,7 +57,7 @@
       </div>
     <% end %>
   </div>
-  <div class="w-1/4 pl-8">
+  <div class="w-1/4 pl-8 mt-12">
     <h3 class="text-lg font-bold mb-4">Recommended Topics</h3>
     <div class="flex flex-wrap">
       <% Tag.limit(12).each do |tag| %>
